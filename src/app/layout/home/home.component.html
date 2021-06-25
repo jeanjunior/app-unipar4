@@ -1,0 +1,58 @@
+<div class="row principal">
+
+  <!-- Vendas por Mês - Valor -->
+  <div class="col-md-6">
+    
+    <app-card-grafico [titulo]="'Vendas por mês - Valor'"
+                      [dados]="vendasPorMesValor"
+                      (onRefresh)="buscarDadosVendaAsync()">
+    </app-card-grafico>
+
+  </div>
+
+  <!-- Vendas por Mês - Qtde -->
+  <div class="col-md-6">
+    <app-card-grafico [titulo]="'Vendas por mês - Qtde'"
+                      [dados]="vendasPorMesQtde"
+                      [typeChart]="'bar'"
+                      (onRefresh)="buscarDadosVendaAsync()">
+    </app-card-grafico>
+  </div>
+
+  <!-- Vendas por Mês - Valor e Qtde -->
+  <div class="col-md-6">
+    <app-card-grafico [titulo]="'Vendas por mês - Valor e Qtde'"
+                      [dados]="vendasPorMesValorQtde"
+                      [typeChart]="'line'"
+                      (onRefresh)="buscarDadosVendaAsync()">
+      </app-card-grafico>
+  </div>
+
+  <div class="col-md-6">
+    <app-card [titulo]="'Totais do Ano'"
+              [loading]="vendasPorMesValorQtde.loading"
+              (onRefresh)="buscarDadosVendaAsync()">
+      <div class="row">
+
+        <app-card-numero [titulo]="'Qtde'" [valor]="totalGeral.qtde">
+        </app-card-numero>
+
+        <app-card-numero [titulo]="'Valor'" [valor]="totalGeral.valor">
+        </app-card-numero>
+        
+      </div>
+    </app-card>
+  </div>
+
+  <!-- Vendas por Produto -->
+  <div class="col-md-6">
+    
+    <app-grafico-produto>
+    </app-grafico-produto>
+
+    <button class="btn btn-success" (click)="navegarParaDrag()">Go to Drag-drop</button>
+    <button class="btn btn-success" [routerLink]="['/usuarios']">Go to Drag-drop 2</button>
+
+  </div>
+
+</div>

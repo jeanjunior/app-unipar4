@@ -1,0 +1,18 @@
+.area-drop {
+  height: calc(100vh - 120px);
+  overflow: auto;
+  .area-item {
+    border: 1px solid #4593b3;
+    border-radius: 8px;
+    padding: 3px;
+    margin: 2px;
+  }
+  .bloqueado{
+    background-color: #a1a1a1;
+  }
+}
+
+.area-totais {
+  position: fixed;
+  bottom: 0;
+}

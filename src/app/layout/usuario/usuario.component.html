@@ -1,0 +1,46 @@
+<div class="card m-3 shadow bg-body rounded">
+  <h5 class="card-header">
+    Lista de Usuários
+  </h5>
+  <div class="card-body">
+
+    <div class="col-md-12 mb-1">
+      <input type="text" [formControl]="searchControl!" class="form-control"
+        placeholder="Digite para pesquisar usuários pelo nome" />
+    </div>
+
+    <table class="table table-bordered table-striped table-hover rounded-3">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Login</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Inclusão</th>
+          <th>Alteração</th>
+          <th>
+            <button class="btn btn-outline-primary btn-circle" (click)="abrirModal(undefined)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of usuariosSearch">
+          <td class="text-center">{{ item.id }}</td>
+          <td class="text-center">{{ item.username }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.dateInsert | date : 'dd/MM/yyyy hh:mm' }}</td>
+          <td>{{ item.dateUpdate | date : 'dd/MM/yyyy hh:mm' }}</td>
+          <td>
+            <button class="btn btn-outline-primary btn-circle" (click)="abrirModal(item)">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

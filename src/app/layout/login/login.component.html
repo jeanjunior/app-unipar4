@@ -1,0 +1,32 @@
+<div id="banner">
+  <div class="card card-container opac fade-login">
+    <img id="profile-img" alt="Bem vindo" class="profile-img-card" src="../../../assets/imagens/angular.png" />
+    <h3 class="text-center">Bem vindo</h3>
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <!-- Login do usuário -->
+    <form class="form-signin fade-in fade-in-left" (ngSubmit)="fazerLogin()">
+      <span id="reauth-email" class="reauth-email"></span>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="usuario.userName" name="userName" placeholder="Usuário"
+          required autofocus>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="usuario.password" name="password"
+          required>
+      </div>
+
+      <button class="btn btn-lg btn-success btn-signin" type="submit">
+        Login
+      </button>
+    </form>
+  </div><!-- /card-container -->
+</div><!-- /container -->

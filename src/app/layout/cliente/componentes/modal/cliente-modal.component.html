@@ -1,0 +1,121 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{cliente?.id ? 'Editando': 'Inserindo'}} cliente</h5>
+</div>
+<div class="modal-body m-3">
+
+  <form [formGroup]="formGroup" *ngIf="formGroup">
+
+    <div class="row">
+      <!-- Campo de Nome -->
+      <div class=" col-md-12 mt-1 form-group">
+        <label class="form-control-label">Nome</label>
+        <input type="text" class="form-control" formControlName="nome">
+        <app-message-valid-control [control]="getControl('nome')"> </app-message-valid-control>
+      </div>
+
+      <!-- Campo de CPF -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">CPF</label>
+        <input type="text" class="form-control" formControlName="cpf" [textMask]="{ mask: maskCPF, guide: true }">
+        <app-message-valid-control [control]="getControl('cpf')"> </app-message-valid-control>
+      </div>
+
+      <!-- Campo de Data Nascimento -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">Data Nascimento</label>
+        <input type="date" class="form-control" formControlName="dataNascimento">
+        <app-message-valid-control [control]="getControl('dataNascimento')"> </app-message-valid-control>
+      </div>
+    </div>
+
+    <!-- Endereço -->
+    <div class="row mt-1" formGroupName="endereco">
+      <!-- Logradouro -->
+      <div class="col-md-12 mt-1 form-group">
+        <label class="form-control-label">Logradouro</label>
+        <input type="text" class="form-control" formControlName="logradouro">
+        <app-message-valid-control [control]="getControl('endereco.logradouro')"> </app-message-valid-control>
+      </div>
+
+      <!-- Número -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">Número</label>
+        <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control"
+          formControlName="numero">
+        <app-message-valid-control [control]="getControl('endereco.numero')"> </app-message-valid-control>
+      </div>
+
+      <!-- Bairro -->
+      <div class="col-md-8 mt-1 form-group">
+        <label class="form-control-label">Bairro</label>
+        <input type="text" class="form-control" formControlName="bairro">
+        <app-message-valid-control [control]="getControl('endereco.bairro')"> </app-message-valid-control>
+      </div>
+
+      <!-- Cidade -->
+      <!-- <div class="col-md-8 mt-1 form-group">
+        <label class="form-control-label">Cidade - OLD</label>
+        <input type="text" class="form-control" formControlName="cidade">
+        <app-message-valid-control [control]="getControl('endereco.cidade')"> </app-message-valid-control>
+      </div> -->
+
+      <!-- Cidade -->
+      <div class="col-md-8 mt-1 form-group">
+        <label class="form-control-label">Cidade</label>
+        <ng-select formControlName="cidade"
+                   [items]="cidades"
+                   bindLabel="nome"
+                   [searchable]="false">
+          <ng-template ng-option-tmp let-item="item">
+            {{item.nome}} - {{item.uf}}
+          </ng-template>
+        </ng-select>
+        <app-message-valid-control [control]="getControl('endereco.cidade')"> </app-message-valid-control>
+      </div>
+
+      <!-- Cidade ID -->
+      <div class="col-md-8 mt-1 form-group">
+        <label class="form-control-label">Cidade ID</label>
+        <ng-select formControlName="cidadeId"
+                   [items]="cidades"
+                   [multiple]="true"
+                   bindValue="id"
+                   bindLabel="nome"
+                   [searchable]="true">
+          <ng-template ng-option-tmp let-item="item">
+            {{item.nome}} - {{item.uf}}
+          </ng-template>
+          <!-- <ng-template ng-label-tmp let-item="item">
+            {{item.nome}} - {{item.uf}}
+          </ng-template> -->
+        </ng-select>
+        <app-message-valid-control [control]="getControl('endereco.cidade')"> </app-message-valid-control>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <!-- Mostra as informações de datas -->
+      <div class="col-md-6 mt-3 text-info" *ngIf="cliente?.dateInsert">
+        Data da Inclusão: {{cliente?.dateInsert | date : 'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+      <div class="col-md-6 mt-3 text-info" *ngIf="cliente?.dateUpdate">
+        Data da Atualização: {{cliente?.dateUpdate | date : 'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <!-- Botão para salvar o usuário -->
+  <button class="btn btn-success" (click)="salvar()">
+    <i class="fa fa-save mr-2"></i>
+    Salvar
+  </button>
+  <!-- Botão para excluír o usuário (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
+  <button class="btn btn-danger" (click)="excluir()" *ngIf="cliente?.id">
+    <i class="fa fa-delete mr-2"></i>
+    Excluír
+  </button>
+</div>

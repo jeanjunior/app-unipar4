@@ -1,0 +1,5 @@
+<span class="text-danger" *ngIf="hasErrors">
+  <span *ngFor="let error of listOfErrors() | slice:0:1">
+    {{error}}
+  </span>
+</span>

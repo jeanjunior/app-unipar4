@@ -1,0 +1,46 @@
+<div class="row">
+
+  <div class="col-md-6 area-drop" dnd-droppable (onDropSuccess)="removerItem($event.dragData)">
+    <h5>Itens Disponíveis</h5>
+
+    <div class="area-item" dnd-draggable
+                           [dragEnabled]="item.id > 3"
+                           *ngFor="let item of itensAll; trackBy : trackById"
+                           [dragData]="item"
+                           (dblclick)="adicionarItem(item)"
+                           [ngClass]="{'bloqueado': item.id <= 3}">
+
+      {{ item.descricao }}
+      <div>
+        {{ item.preco | currency : 'R$'}}
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-6 area-drop" dnd-droppable (onDropSuccess)="adicionarItem($event.dragData)">
+    <h5>Itens Adicionados</h5>
+
+    <div class="area-item" dnd-draggable [dragEnabled]="true" *ngFor="let item of itensAdd" [dragData]="item"
+      (dblclick)="removerItem(item)">
+
+      {{ item.descricao }}
+      <div>
+        {{ item.preco | currency : 'R$'}}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-12 area-totais">
+    <span>
+      Quantidade {{ totais.qtde }}
+    </span>
+    <span>
+      Valor: {{ totais.valor | currency : 'R$'}}
+    </span>
+
+  </div>
+
+</div>

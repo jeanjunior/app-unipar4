@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <!-- Home page -->
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img height="24" src="../../../../assets/imagens/logo-nav.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menus de acesso as telas -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownCadastros" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Cadastros
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastros">
+            <li><a class="dropdown-item" [routerLink]="['/usuarios']">Usuários</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/clientes']">Clientes</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Usuário logado e menu para sair -->
+      <ul class="d-flex navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownSair" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa fa-user" aria-hidden="true"></i>{{ usuario?.name }}<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownSair">
+            <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!--nav class="navbar navbar-expand-lg fixed-top" style="padding: 0.2rem 0.5rem;">
+
+  <a [routerLink]="['/']">
+    <img height="40" src="../../../../assets/imagens/logo-nav.png">
+  </a>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown" ngbDropdown>
+        <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+          <i class="fa fa-user" aria-hidden="true"></i>{{ usuario?.name }}<b class="caret"></b>
+        </a>
+        <div class="dropdown-menu-right" ngbDropdownMenu>
+          <a class="dropdown-item" [routerLink]="['/logout']" (click)="onLoggedout()">
+            <i class="fa fa-fw fa-power-off" aria-hidden="true"></i>
+            Log Out
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</nav-->

@@ -1,0 +1,129 @@
+{
+  "authInfo": {
+    "id": 1,
+    "username": "admin",
+    "name": "Administrador do sistema",
+    "email": "email@email.com",
+    "token": "0123456789"
+  },
+  "users": [
+    {
+      "id": 2,
+      "username": "jean",
+      "password": "123456",
+      "name": "Jean Junior",
+      "email": "jean@email.com",
+      "dateInsert": "2021-05-25T01:14:00.221Z",
+      "dateUpdate": "2021-05-25T01:14:39.221Z"
+    },
+    {
+      "username": "admin",
+      "password": "admin123",
+      "name": "Administrador do sistema",
+      "email": "admin@email.com",
+      "dateInsert": "2021-05-29T23:32:57.582Z",
+      "id": 5,
+      "dateUpdate": "2021-05-31T11:33:37.567Z"
+    }
+  ],
+  "clientes": [
+    {
+      "nome": "Jean Junior Heldt - Alterado",
+      "cpf": "65852121002",
+      "dataNascimento": "2000-12-31",
+      "endereco": {
+        "logradouro": "minha rua",
+        "numero": 123,
+        "bairro": "Centro",
+        "cidade": {
+          "id": 2,
+          "nome": "Marechal",
+          "uf": "PR"
+        },
+        "cidadeId": 3
+      },
+      "dateInsert": "2021-06-10T00:17:14.484Z",
+      "id": 1,
+      "dateUpdate": "2021-06-12T20:52:10.368Z"
+    }
+  ],
+  "vendasPorMes": [
+    {
+      "mes": "Janeiro",
+      "quantidade": 45,
+      "valor": 145
+    },
+    {
+      "mes": "Fevereiro",
+      "quantidade": 60,
+      "valor": 300
+    },
+    {
+      "mes": "Março",
+      "quantidade": 68,
+      "valor": 350
+    },
+    {
+      "mes": "Abril",
+      "quantidade": 20,
+      "valor": 68
+    },
+    {
+      "mes": "Maio",
+      "quantidade": 18,
+      "valor": 60
+    },
+    {
+      "mes": "Junho",
+      "quantidade": 39,
+      "valor": 145
+    },
+    {
+      "mes": "Julho",
+      "quantidade": 38,
+      "valor": 215
+    },
+    {
+      "mes": "Agosto",
+      "quantidade": 38,
+      "valor": 299
+    },
+    {
+      "mes": "Setembro",
+      "quantidade": 60,
+      "valor": 560
+    },
+    {
+      "mes": "Outubro",
+      "quantidade": 51,
+      "valor": 398
+    },
+    {
+      "mes": "Novembro",
+      "quantidade": 70,
+      "valor": 520
+    },
+    {
+      "mes": "Dezembro",
+      "quantidade": 68,
+      "valor": 499
+    }
+  ],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "Toledo",
+      "uf": "PR"
+    },
+    {
+      "id": 2,
+      "nome": "Marechal",
+      "uf": "PR"
+    },
+    {
+      "id": 3,
+      "nome": "Cascavel",
+      "uf": "PR"
+    }
+  ]
+}

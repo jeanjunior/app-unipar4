@@ -1,0 +1,13 @@
+table {
+  thead tr th:last-child,
+  tbody tr td:last-child {
+    width: 60px;
+  }
+  tr {
+    vertical-align: middle;
+  }
+}
+
+.btn-circle {
+  border-radius: 50%;
+}
