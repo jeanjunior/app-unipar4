@@ -27,3 +27,10 @@ https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free
 Bootstrap
 
 https://getbootstrap.com/docs/5.0/forms/overview/
+
+
+## Faz o build e gera a imagem
+docker build -t app-unipar4-image .
+
+## Faz o deploy de um container com a imagem
+docker run --name app-unipar4-container -d -p 8080:80 app-unipar4-image
