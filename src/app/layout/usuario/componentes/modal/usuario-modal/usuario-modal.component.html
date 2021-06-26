@@ -7,35 +7,34 @@
 
     <div class="row">
       <!-- Campo de UserName -->
-      <div class="col-md-4 mt-1 form-group">
-        <label class="form-control-label">Login do usuário</label>
-        <input type="text" class="form-control" formControlName="username"
-          [ngClass]="{'is-invalid': hasErrors(username!)}">
+      <mat-form-field class="col-md-6 col-lg-4 mt-1">
+        <mat-label>Login do usuário</mat-label>
+        <input type="text" matInput formControlName="username">
         <app-message-valid-control [control]="username!"> </app-message-valid-control>
-      </div>
+      </mat-form-field>
 
       <!-- Campo de Senha -->
-      <div class="col-md-4 mt-1 form-group">
-        <label class="form-control-label">Senha</label>
-        <input type="password" class="form-control" formControlName="password">
+      <mat-form-field class="col-md-6 col-lg-4 mt-1">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput formControlName="password">
         <app-message-valid-control [control]="password!"></app-message-valid-control>
-      </div>
+      </mat-form-field>
     </div>
 
     <div class="row">
       <!-- Campo de Nome -->
-      <div class=" col-md-12 mt-1 form-group">
-        <label class="form-control-label">Nome</label>
-        <input type="text" class="form-control" formControlName="name">
+      <mat-form-field class=" col-md-12 mt-1">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="name">
         <app-message-valid-control [control]="name!"> </app-message-valid-control>
-      </div>
+      </mat-form-field>
 
       <!-- Campo de E-mail -->
-      <div class="col-md-12 mt-1 form-group">
-        <label class="form-control-label">E-mail</label>
-        <input type="email" class="form-control" formControlName="email">
+      <mat-form-field class="col-md-12 mt-1">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput formControlName="email">
         <app-message-valid-control [control]="email!"> </app-message-valid-control>
-      </div>
+      </mat-form-field>
 
       <!-- Mostra as informações de datas -->
       <div class="col-md-6 mt-3 text-info" *ngIf="usuario?.dateInsert">

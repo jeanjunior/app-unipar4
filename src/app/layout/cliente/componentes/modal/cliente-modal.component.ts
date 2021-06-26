@@ -1,5 +1,5 @@
 import { GenericValidator } from './../../../../shared/helpers/validators.helper';
-import { maskCPF } from './../../../../shared/helpers/utils.helper';
+import { mapToNumbers, mapToNumeric, maskCPF } from './../../../../shared/helpers/utils.helper';
 import { Endereco, Cidade } from './../../models/cliente.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
@@ -96,7 +96,8 @@ export class ClienteModalComponent implements OnInit {
     // Pega as informações que estão no formGroup (que são os campos da tela)
     const clienteForm = this.formGroup?.getRawValue();
     // Faz o merge dos objeto cliente inicial com os campos alterados na tela
-    const cliente = { ...this.cliente, ...clienteForm };
+    const cliente = { ...this.cliente, ...clienteForm } as Cliente;
+    cliente.cpf = mapToNumeric(cliente.cpf);
 
     // Chama o service para salvar na API
     this.clienteService.salvar(cliente)

@@ -4,12 +4,62 @@
   </h5>
   <div class="card-body">
 
-    <div class="col-md-12 mb-1">
-      <input type="text" [formControl]="searchControl!" class="form-control"
+    <mat-form-field class="col-md-12 mb-1">
+      <input type="text" matInput [formControl]="searchControl!"
         placeholder="Digite para pesquisar usuários pelo nome" />
-    </div>
+    </mat-form-field>
 
-    <table class="table table-bordered table-striped table-hover rounded-3">
+    <table mat-table [dataSource]="dataSource" class="col-md-12 mat-elevation-z8">
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Login</th>
+        <td mat-cell *matCellDef="let element">{{element.username}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element">{{element.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateInsert">
+        <th mat-header-cell *matHeaderCellDef>Inclusão</th>
+        <td mat-cell *matCellDef="let element">{{element.dateInsert | date : 'dd/MM/yyyy hh:mm:ss'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateUpdate">
+        <th mat-header-cell *matHeaderCellDef>Alteração</th>
+        <td mat-cell *matCellDef="let element">{{element.dateUpdate | date : 'dd/MM/yyyy hh:mm:ss'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          <button class="btn btn-outline-primary btn-circle" (click)="abrirModal(undefined)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-outline-primary btn-circle" (click)="abrirModal(element)">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </ng-container>
+
+    </table>
+
+    <!-- <table class="table table-bordered table-striped table-hover rounded-3">
       <thead class="table-dark">
         <tr>
           <th class="text-center">#</th>
@@ -40,7 +90,7 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
   </div>
 </div>

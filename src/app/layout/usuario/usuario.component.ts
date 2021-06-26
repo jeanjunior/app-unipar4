@@ -1,3 +1,4 @@
+import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { UsuarioModalComponent } from './componentes/modal/usuario-modal/usuario-modal.component';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +18,9 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuariosSearch: Usuario[] = [];
   searchControl: FormControl = new FormControl();
+
+  dataSource: MatTableDataSource<Usuario> = new MatTableDataSource<Usuario>();
+  displayedColumns = ['id', 'username', 'name', 'dateInsert', 'dateUpdate', 'action'];
 
   // Para todos os service que o componente for usar precisa ser injetado recebendo pelo construtor
   constructor(
@@ -45,10 +49,11 @@ export class UsuarioComponent implements OnInit {
 
   private filtrarUsuarios(value: string): void {
     // Filtra os usuário e responde no array de usuários filtrados
-    this.usuariosSearch = this.usuarios.filter(u =>
-      // coloca o nome do usuário em minusculo para ignorar os maiusculos dos minusculos
-      u.name.toLocaleLowerCase().includes(value)
-    );
+    // this.usuariosSearch = this.usuarios.filter(u =>
+    //   // coloca o nome do usuário em minusculo para ignorar os maiusculos dos minusculos
+    //   u.name.toLocaleLowerCase().includes(value)
+    // );
+    this.dataSource.filter = value;
   }
 
   private carregaUsuariosFromApi(): void {
@@ -60,6 +65,7 @@ export class UsuarioComponent implements OnInit {
       .subscribe(result => {
         // pega o retorno recebido pela api e joga na nossa lista de usuários
         this.usuarios = result;
+        this.dataSource.data = result;
 
         // Chama a função para filtrar os usuários para trazer toda a lista
         this.filtrarUsuarios('');
