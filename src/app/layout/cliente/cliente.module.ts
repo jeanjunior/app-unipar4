@@ -11,6 +11,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { NgSelectModule } from '@ng-select/ng-select';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -22,7 +27,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     TextMaskModule,
     CurrencyMaskModule,
     HomeModule,
-    NgSelectModule
+    NgSelectModule,
+
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [
     ClienteComponent,

@@ -7,6 +7,7 @@ import { Cliente } from './models/cliente.model';
 import { ClienteService } from './services/cliente.service';
 import { debounceTime } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-cliente',
@@ -16,8 +17,10 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class ClienteComponent implements OnInit {
 
   clientes: Cliente[] = [];
-  clientesSearch: Cliente[] = [];
   searchControl: FormControl = new FormControl();
+
+  dataSource: MatTableDataSource<Cliente> = new MatTableDataSource<Cliente>();
+  displayedColumns = ['id', 'nome', 'cpf', 'dataNascimento', 'dateInsert', 'dateUpdate', 'action'];
 
   // Para todos os service que o componente for usar precisa ser injetado recebendo pelo construtor
   constructor(
@@ -37,6 +40,10 @@ export class ClienteComponent implements OnInit {
         this.filtrarClientes(value.toLocaleLowerCase());
 
       });
+
+    this.dataSource.filterPredicate = (data: Cliente, filter: string): boolean =>
+      data.nome.toLocaleLowerCase().includes(filter) ||
+      data.id!.toString().includes(filter);
   }
 
   ngOnInit(): void {
@@ -47,10 +54,7 @@ export class ClienteComponent implements OnInit {
 
   private filtrarClientes(value: string): void {
     // Filtra os usuário e responde no array de clientes filtrados
-    this.clientesSearch = this.clientes.filter(u =>
-      // coloca o nome do cliente em minusculo para ignorar os maiusculos dos minusculos
-      u.nome.toLocaleLowerCase().includes(value)
-    );
+    this.dataSource.filter = value;
   }
 
   private carregaClientesFromApi(): void {
@@ -62,6 +66,8 @@ export class ClienteComponent implements OnInit {
       .subscribe(result => {
         // pega o retorno recebido pela api e joga na nossa lista
         this.clientes = result;
+
+        this.dataSource.data = result;
 
         // Chama a função para filtrar para trazer toda a lista
         this.filtrarClientes('');

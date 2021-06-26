@@ -82,10 +82,6 @@ export class ClienteModalComponent implements OnInit {
       cidade: [
         endereco.cidade,
         Validators.compose([Validators.required])
-      ],
-      cidadeId: [
-        endereco.cidadeId,
-        Validators.compose([Validators.required])
       ]
     });
   }
